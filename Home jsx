@@ -1,0 +1,88 @@
+import React from 'react';
+import { Container, Typography, Button, AppBar, Toolbar, containerClasses } from '@mui/material';
+import './App.css';
+import "./home.css"
+
+function RestaurantCard({ name, cuisine, image }) {
+  return (
+      <div className='restaurant-card-container' style={{display: 'flex', flexDirection: 'row'}}>
+
+    <div className="restaurant-card">
+      <img src={image} alt={name} className="restaurant-image" />
+      <Typography variant="h4" className="restaurant-name">
+        {name}
+      </Typography>
+      <Typography variant="body1" className="restaurant-cuisine">
+        Cuisine: {cuisine}
+      </Typography>
+      <Button variant="contained" color="primary" className="order-button">
+        Order Now
+      </Button>
+    </div>
+      </div>
+  );
+}
+
+function HomePage() {
+  const restaurants = [
+    {
+      name: 'Italiano',
+      cuisine: 'Pizza and Pasta',
+      image: 'https://i.pinimg.com/564x/37/83/1b/37831bbf0e27cdf2992cd8730b6bfcf6.jpg',
+    },
+    {
+      name: 'Japanese Cuisine',
+      cuisine: 'Sushi, ramen',
+      image: 'https://i.pinimg.com/564x/e7/f5/00/e7f5002a3ab0b3bdb174ce2a8b53b869.jpg',
+    },
+    {
+      name: 'Thai',
+      cuisine: 'Various',
+      image: 'https://i.pinimg.com/564x/28/37/96/283796edefa0722ff0a98ec9bc63d89a.jpg',
+    },
+    {
+      name: 'Kebab and Grill',
+      cuisine: 'Street Food',
+      image: 'https://i.pinimg.com/564x/2a/03/8e/2a038e4d8ac5ec20a35cda6254e68ec3.jpg',
+    },
+    {
+      name: 'Desserts',
+      cuisine: 'Milkshakes and Icecream',
+      image: 'https://i.pinimg.com/564x/01/ee/bf/01eebf6aab515b913fe95eb2c540e2ee.jpg',
+    },
+    
+    {
+      name: 'Snacks and Chaat',
+      cuisine: 'various',
+      image: 'https://i.pinimg.com/564x/34/a2/8c/34a28cbd784e4284d18c456a1aa43c27.jpg',
+    },
+  ];
+
+  return (
+    <div>
+      <AppBar position="static" className="app-bar" style={{width: '1345px', backgroundColor: 'tan'}}>
+        <Toolbar>
+          <Typography variant="dense" className="navbar-title">
+            <h2>FoodTrap</h2>
+          </Typography>
+          <Button color="inherit">Menu</Button>
+          <Button color="inherit">Contact</Button>
+        </Toolbar>
+      </AppBar>
+      <Container className="home-container" style={{display: 'flex'}}>
+        {restaurants.map((restaurant, index) => (
+          <RestaurantCard key={index} {...restaurant} />
+        ))}
+      </Container>
+      <footer className="footer">
+        <Container>
+          <Typography variant="body2" color="textSecondary" align="center">
+            © 2023 FoodieHub. All rights reserved.
+          </Typography>
+        </Container>
+      </footer>
+    </div>
+  );
+}
+
+export default HomePage;
