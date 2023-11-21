@@ -1,0 +1,75 @@
+// Registration.js
+import React, { useState } from 'react';
+import Button from '@mui/material/Button';
+import "./signup.css"
+
+function Registration() {
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+    emailPhone: '',
+  });
+
+  const handleChange = (name, value) => {
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    
+
+    console.log('Form data submitted:', formData);
+  };
+
+  const handleCreateAccount = () => {
+    // Additional logic before creating an account
+    // ...
+
+    // Call the handleSubmit function to perform validation and submission
+    handleSubmit(new Event('submit', { bubbles: true }));
+  };
+
+  return (
+    <div className="main-container">
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+        <div style={{color: "black"}}><h2>SIGN-UP</h2></div>
+          <label>
+            <h3>Username</h3> &nbsp;
+            <input
+              type='text'
+              name='username'
+              value={formData.username}
+              onChange={(e) => handleChange('username', e.target.value)}
+            />
+          </label>
+          <label>
+            <h3>Password</h3> &nbsp;
+            <input
+              type='password'
+              name='password'
+              value={formData.password}
+              onChange={(e) => handleChange('password', e.target.value)}
+            />
+          </label>
+          <label>
+            <h3>Email-Id</h3> &nbsp;
+            <input
+              type='text'
+              name='emailPhone'
+              value={formData.emailPhone}
+              onChange={(e) => handleChange('emailPhone', e.target.value)}
+            />
+          </label>
+          
+          <br /><br />
+        </form>
+        <button onClick={handleCreateAccount}>Create Account</button>
+      <br></br><br></br><Button variant="text" style={{fontSize:'12px', borderColor:"white",color:"white"}}>Click to access existing account</Button>
+      </div>
+    </div>
+  );
+}
+
+export default Registration;
